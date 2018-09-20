@@ -1,40 +1,49 @@
 <div class="jumbotron">
-  <h1 class="display-4">Burger Shop</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <h1 class="text-center">
+    <span class="fa fa-cutlery"></span> Eat The Burger </h1>
+
 
 </div>
 
 <div class="container">
   <div class="row">
-  <div class="col-sm-6">
-    <ul>
-      {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block devoured=true}} {{/unless}} {{/each}}
-    </ul>
-  </div>
-
-  <div class="col-sm-6">
-    <ul>
-      {{#each burgers}} {{#if devoured}} {{> burgers/burger-block devoured=false}} {{/if}} {{/each}}
-    </ul>
-  </div>
-
-  <h2>Add a Burger</h2>
-
-  <form class="create-form">
-
-    <div class="form-group">
-      <label for="ba">Burger Name:</label>
-      <input type="text" id="ba" name="name">
-    </div>
-</div>
-    <div class="form-group">
-      <label for="devoured">Devoured?</label>
-      <br>
-      <input type="radio" name="devoured" value="1" checked> devoured!
-      <br>
-      <input type="radio" name="devoured" value="0"> not devoured
+    <div class="col-sm-6">
+      <ul>
+        {{#each burgers}} {{#unless devoured}}
+        <li>
+          {{burger_name}}
+          <button class="change-devoured btn btn-outline-primary btn-sm" data-id="{{id}}" data-newdevoured="true" style="position: absolute; right: 0;">
+            DEVOUR
+          </button>
+        </li>
+        {{/unless}} {{/each}}
+      </ul>
     </div>
 
-    <button type="submit">Add Burger</button>
-  </form>
+    <div class="col-sm-6">
+      <ul class="list-group">
+        {{#each burgers}} {{#if devoured}}
+        <li class="list-group-item">
+          {{burger_name}}
+        </li>
+        {{/if}} {{/each}}
+      </ul>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+    <form class="create-form">
+
+      <div class="form-group">
+        <textarea class="form-control" id="ba" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">Add Burger</button>
+  
+    </form>
+    </div>
+  </div>
+
+
 </div>
